@@ -12,7 +12,12 @@ const app = express();
 
 // ── Middleware ──────────────────────────────────────────────────────────────
 app.use(cors({
-  origin: process.env.CLIENT_URL ? process.env.CLIENT_URL.split(',') : ['http://localhost:5173', 'http://localhost:3000'],
+  origin: [
+    'https://stock-sense-khaki-chi.vercel.app',
+    'http://localhost:5173',
+    'http://localhost:3000',
+    ...(process.env.CLIENT_URL ? process.env.CLIENT_URL.split(',') : [])
+  ],
   credentials: true,
 }));
 app.use(express.json());
